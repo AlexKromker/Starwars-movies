@@ -1,0 +1,39 @@
+.loader-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+
+.BB-8 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  padding-top: 32px;
+  width: 68px;
+
+  .head {
+    position: absolute;
+    width: 32px;
+    height: 32px;
+    top: 8px;
+    right: 0px;
+    transform: rotate(24deg);
+  }
+
+  .body {
+    animation: image-spin infinite 1s linear;
+  }
+}
+
+@keyframes image-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
