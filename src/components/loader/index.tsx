@@ -4,11 +4,9 @@ import BB8Head from "../../shared/assets/images/BB8_head.svg";
 
 export default function BB8Loader() {
   return (
-    <div className={styles["loader-container"]}>
-      <div className={styles["BB-8"]}>
-        <img src={BB8Head} alt="BB-8 head" className={styles.head} />
-        <img src={BB8Body} alt="BB-8 body" className={styles.body} />
-      </div>
+    <div className={styles["BB-8"]}>
+      <img src={BB8Head} alt="BB-8 head" className={styles.head} />
+      <img src={BB8Body} alt="BB-8 body" className={styles.body} />
     </div>
   );
 }
