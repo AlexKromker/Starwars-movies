@@ -5,7 +5,7 @@ import {
   setPopupContent,
   showLoadingPopup,
 } from "../../../../components/popupMenu/popupSlice";
-import { getItemByUrl } from "../../../../shared/api/films";
+import { getItemAndSubitemsByUrl } from "../../../../shared/api/films";
 import { useAppDispatch } from "../../../../shared/hooks/useStore";
 
 const HoverableLists: FC<HoverableListPropType> = ({ listLabel, itemList }) => {
@@ -13,11 +13,18 @@ const HoverableLists: FC<HoverableListPropType> = ({ listLabel, itemList }) => {
 
   async function handleClick(name: string, itemUrl: string) {
     dispatch(showLoadingPopup());
-    const { data } = await getItemByUrl(itemUrl);
+    const res = await getItemAndSubitemsByUrl(itemUrl);
+    // properties we don't want displayed or used
+    // Note: If any property ti delete does note exist,
+    // it just returns true and continues
+    delete res.url;
+    delete res.created;
+    delete res.edited;
+
     dispatch(
       setPopupContent({
         title: name,
-        content: data.fields,
+        content: res,
       })
     );
   }

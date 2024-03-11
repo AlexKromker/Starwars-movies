@@ -1,15 +1,15 @@
+import { url } from "inspector";
 import baseApi from "..";
 import { HoverableItemType } from "../../../pages/filmDetails/components/interfaces";
-import { mockFilmResponse, mockFilmsResponse } from "./mock-data";
 import axios from "axios";
 
 export const getAllMovies = async (): Promise<TableData | null> => {
   try {
     // TODO: Utilize api here instead of mock data
-    // const { data } = await baseApi.get("api/films");
-    const { data } = mockFilmsResponse;
+    const { data } = await baseApi.get("api/films");
+    // const { data } = mockFilmsResponse;
 
-    const movieRes: MovieResponse[] = data.fields.results.map(
+    const movieRes: MovieResponse[] = data.results.map(
       ({ fields }: FilmResults) => {
         return {
           title: fields.title,
@@ -33,33 +33,57 @@ export const getAllMovies = async (): Promise<TableData | null> => {
 };
 
 export const getSingleMovie = async (filmId: string) => {
-  // const { data: FilmResData } = await baseApi.get(`api/films/${filmId}`);;
-  // const fetchedCharacters = await getNameUrlWithUrlList(
-  //   FilmResData.fields.characters
-  // );
-  // const fetchedPlanets = await getNameUrlWithUrlList(
-  //   FilmResData.fields.planets
-  // );
-  // const fetchedSpecies = await getNameUrlWithUrlList(
-  //   FilmResData.fields.species
-  // );
-  // const fetchedStarships = await getStarshipList(FilmResData.fields.starships);
-  // const fetchedVehicles = await getNameUrlWithUrlList(
-  //   FilmResData.fields.vehicles
-  // );
-  // return {
-  //   ...FilmResData.fields,
-  //   characters: fetchedCharacters,
-  //   planets: fetchedPlanets,
-  //   species: fetchedSpecies,
-  //   starships: fetchedStarships,
-  //   vehicles: fetchedVehicles,
-  // };
-  return mockFilmResponse;
+  const { data: FilmResData } = await baseApi.get(`api/films/${filmId}`);
+  const fetchedCharacters = await getNameUrlWithUrlList(
+    FilmResData.fields.characters
+  );
+  const fetchedPlanets = await getNameUrlWithUrlList(
+    FilmResData.fields.planets
+  );
+  const fetchedSpecies = await getNameUrlWithUrlList(
+    FilmResData.fields.species
+  );
+  const fetchedStarships = await getNameUrlWithUrlList(
+    FilmResData.fields.starships
+  );
+  const fetchedVehicles = await getNameUrlWithUrlList(
+    FilmResData.fields.vehicles
+  );
+  return {
+    ...FilmResData.fields,
+    characters: fetchedCharacters,
+    planets: fetchedPlanets,
+    species: fetchedSpecies,
+    starships: fetchedStarships,
+    vehicles: fetchedVehicles,
+  };
+  // return mockFilmResponse;
 };
 
-export const getItemByUrl = async (characterUrl: string) =>
-  await baseApi.get(characterUrl);
+export const getItemByUrl = async (itemUrl: string) =>
+  await baseApi.get(itemUrl);
+
+export const getItemAndSubitemsByUrl = async (itemUrl: string) => {
+  const { data } = await baseApi.get(itemUrl);
+  let fields = data.fields;
+
+  const mapping = Object.keys(fields).map(async (itemKey: string) => {
+    // Only url arrays are returned from the api
+    if (Array.isArray(fields[itemKey]) && fields[itemKey].length) {
+      fields[itemKey] = await getNameUrlWithUrlList(fields[itemKey]);
+    } else if (fields[itemKey].includes("/api")) {
+      fields[itemKey] = await getNameWithUrl(fields[itemKey]);
+    }
+  });
+
+  await axios.all(mapping);
+  return fields;
+};
+
+const getNameWithUrl = async (itemUrl: string) => {
+  const { data } = await baseApi.get(itemUrl);
+  return data.fields.starship_class || data.fields.name;
+};
 
 const getNameUrlWithUrlList = async (
   urlList: string[]
@@ -67,19 +91,7 @@ const getNameUrlWithUrlList = async (
   const itemReq = urlList.map((url) => baseApi.get(url));
   return axios.all(itemReq).then((responses) => {
     return responses.map(({ data }) => ({
-      name: data.fields.name,
-      url: data.fields.url,
-    }));
-  });
-};
-
-export const getStarshipList = async (
-  starshipUrlList: string[]
-): Promise<HoverableItemType[]> => {
-  const starshipReq = starshipUrlList.map((url) => baseApi.get(url));
-  return axios.all(starshipReq).then((responses) => {
-    return responses.map(({ data }) => ({
-      name: data.fields.starship_class,
+      name: data.fields.starship_class || data.fields.name,
       url: data.fields.url,
     }));
   });
