@@ -11,3 +11,13 @@
   text-decoration: underline;
   }
 }
+
+.btn {
+  border: none;
+  padding: 0;
+  font: inherit;
+  cursor: pointer;
+  outline: inherit;
+  background-color: transparent;
+  color: white;
+}

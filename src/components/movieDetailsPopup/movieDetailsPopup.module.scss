@@ -1,0 +1,37 @@
+$color-background: rgba(18, 107, 115, 0.236);
+
+.popup-container {
+  padding: 40px;
+  font-size: 16px;
+  border-radius: 16px;
+  border: 1px solid rgba(0, 180, 196, 0.6);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.4);
+  color: white;
+  background: $color-background;
+  cursor: pointer;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(8.6px);
+
+  h1 {
+    margin-bottom: 20px;
+    text-align: center;
+  }
+
+  .item-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    text-align: start;
+    gap: 60px;
+    margin-bottom: 12px;
+
+    .title {
+      font-weight: 700;
+    }
+
+    .item-list-container {
+      display: flex;
+      flex-direction: column;
+      column-gap: 8px;
+    }
+  }
+}

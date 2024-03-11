@@ -1,13 +1,10 @@
-import { url } from "inspector";
 import baseApi from "..";
 import { HoverableItemType } from "../../../pages/filmDetails/components/interfaces";
 import axios from "axios";
 
 export const getAllMovies = async (): Promise<TableData | null> => {
   try {
-    // TODO: Utilize api here instead of mock data
     const { data } = await baseApi.get("api/films");
-    // const { data } = mockFilmsResponse;
 
     const movieRes: MovieResponse[] = data.results.map(
       ({ fields }: FilmResults) => {
@@ -15,7 +12,8 @@ export const getAllMovies = async (): Promise<TableData | null> => {
           title: fields.title,
           director: fields.director,
           producer: fields.producer,
-          releaseDate: fields.release_date,
+          release_date: fields.release_date,
+          episode_id: fields.episode_id,
           url: fields.url,
         };
       }
@@ -57,7 +55,6 @@ export const getSingleMovie = async (filmId: string) => {
     starships: fetchedStarships,
     vehicles: fetchedVehicles,
   };
-  // return mockFilmResponse;
 };
 
 export const getItemByUrl = async (itemUrl: string) =>
@@ -71,13 +68,12 @@ export const getItemAndSubitemsByUrl = async (itemUrl: string) => {
     // Only url arrays are returned from the api
     if (Array.isArray(fields[itemKey]) && fields[itemKey].length) {
       fields[itemKey] = await getNameUrlWithUrlList(fields[itemKey]);
-    } else if (fields[itemKey].includes("/api")) {
+    } else if (fields[itemKey]?.includes("/api")) {
       fields[itemKey] = await getNameWithUrl(fields[itemKey]);
     }
   });
 
-  await axios.all(mapping);
-  return fields;
+  return await axios.all(mapping).then(() => fields);
 };
 
 const getNameWithUrl = async (itemUrl: string) => {
@@ -107,16 +103,8 @@ export type MovieResponse = {
   title: string;
   director: string;
   producer: string;
-  releaseDate: string;
+  release_date: string;
   url: string;
-};
-
-export type FilmsResponse = {
-  count: number;
-  next: number | null;
-  previous: number | null;
-  pages: number;
-  results: FilmResults[];
 };
 
 export type FilmResults = {

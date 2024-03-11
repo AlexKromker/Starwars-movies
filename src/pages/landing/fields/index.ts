@@ -15,8 +15,13 @@ export const headerItems = [
     sortable: true,
   },
   {
-    itemKey: "releaseDate",
+    itemKey: "release_date",
     label: "Release Date",
+    sortable: true,
+  },
+  {
+    itemKey: "episode_id",
+    label: "Episode",
     sortable: true,
   },
 ];

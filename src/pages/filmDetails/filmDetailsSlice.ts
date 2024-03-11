@@ -8,7 +8,7 @@ export interface IFilmDetails {
   producer: string;
   director: string;
   opening_crawl: string;
-  releaseDate: string;
+  release_date: string;
   edited: string;
   created: string;
   episode_id: string;
@@ -26,7 +26,7 @@ const initialState: IFilmDetails = {
   producer: "",
   director: "",
   opening_crawl: "",
-  releaseDate: "",
+  release_date: "",
   edited: "",
   created: "",
   episode_id: "",
@@ -49,10 +49,14 @@ const filmDetailsSlice = createSlice({
       };
       return newState;
     },
+    setFilmDetailsLoading: (state, action: PayloadAction<boolean>) => {
+      state.loading = action.payload;
+    },
   },
 });
 
-export const { setFilmDetails } = filmDetailsSlice.actions;
+export const { setFilmDetails, setFilmDetailsLoading } =
+  filmDetailsSlice.actions;
 
 export const selectFilmDetails = (state: RootState) => state.filmDetails;
 

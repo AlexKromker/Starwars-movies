@@ -1,12 +1,14 @@
+@import "../../../../shared/assets/styles/buttons.module.scss";
+
 .hoverable-list-container {
-  display: grid;
-  grid-template-columns: 140px auto;
+  display: flex;
+  justify-content: flex-start;
   gap: 20px;
-  width: 100%;
   text-align: start;
 
   h2 {
     font-size: 24px;
+    min-width: 160px;
   }
 
   .item-list {
@@ -15,20 +17,15 @@
     align-items: center;
     column-gap: 8px;
 
-    .hoverable {
-      // preventing default button styles
-      border: none;
-      padding: 0;
-      font: inherit;
+    .hoverable:hover {
+      text-decoration: underline;
       cursor: pointer;
-      outline: inherit;
-      background-color: transparent;
-      color: white;
-
-      &:hover {
-        text-decoration: underline;
-        cursor: pointer;
-      }
     }
+  }
+}
+
+@media only screen and (max-width: 700px) {
+  .hoverable-list-container {
+    flex-direction: column;
   }
 }

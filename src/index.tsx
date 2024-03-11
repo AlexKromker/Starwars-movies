@@ -6,7 +6,7 @@ import reportWebVitals from "./reportWebVitals";
 import { Provider } from "react-redux";
 import { store } from "./shared/store";
 import { RouterProvider } from "react-router-dom";
-import PopupMenu from "./components/popupMenu";
+import PopupMenu from "./components/movieDetailsPopup";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement

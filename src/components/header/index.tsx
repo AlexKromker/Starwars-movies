@@ -1,7 +1,8 @@
 import { useNavigate } from "react-router-dom";
+import { RoutePaths } from "../../shared/routes";
+import HomeIcon from "../../shared/assets/images/home.svg";
 import StarWarsLogo from "../../shared/assets/images/logo.svg";
 import styles from "./header.module.scss";
-import { RoutePaths } from "../../shared/routes";
 
 export const Header = () => {
   const navigate = useNavigate();
@@ -12,10 +13,14 @@ export const Header = () => {
 
   return (
     <div className={styles["header-container"]}>
-      <button onClick={handleRedirect} className={styles["btn-primary"]}>
-        Back to landing
+      <button onClick={handleRedirect} className={styles["btn"]}>
+        <img src={HomeIcon} alt="Home" className={styles["home-icon"]} />
       </button>
-      <img src={StarWarsLogo} alt="Star wars logo" />
+      <img
+        src={StarWarsLogo}
+        alt="Star wars logo"
+        className={styles["sw-logo"]}
+      />
       <div className={styles["buffer"]}></div>
     </div>
   );

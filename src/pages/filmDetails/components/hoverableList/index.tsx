@@ -1,12 +1,13 @@
 import { FC, useMemo } from "react";
 import { HoverableListPropType } from "../interfaces";
-import styles from "./hoverableList.module.scss";
 import {
   setPopupContent,
   showLoadingPopup,
-} from "../../../../components/popupMenu/popupSlice";
+} from "../../../../components/movieDetailsPopup/popupSlice";
 import { getItemAndSubitemsByUrl } from "../../../../shared/api/films";
 import { useAppDispatch } from "../../../../shared/hooks/useStore";
+import styles from "./hoverableList.module.scss";
+import "../../../../shared/assets/styles/buttons.module.scss";
 
 const HoverableLists: FC<HoverableListPropType> = ({ listLabel, itemList }) => {
   const dispatch = useAppDispatch();
@@ -35,7 +36,7 @@ const HoverableLists: FC<HoverableListPropType> = ({ listLabel, itemList }) => {
       return (
         <button
           key={`${name}-${index}`}
-          className={styles["hoverable"]}
+          className={`${styles["btn"]} ${styles["hoverable"]}`}
           onClick={() => handleClick(name, url)}
         >
           {name}
@@ -43,6 +44,7 @@ const HoverableLists: FC<HoverableListPropType> = ({ listLabel, itemList }) => {
         </button>
       );
     });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [itemList]);
 
   return (

@@ -4,8 +4,7 @@ import { sortWithPropertyValue } from "../../shared/utils";
 
 interface TableState {
   loading: boolean;
-  legendData?: any; // Object with key-value pairs used for legend
-  headerItems: Array<any>; // TODO: Update these types
+  headerItems: Array<any>;
   rows: Array<any>;
   sortedBy: string | null;
   orderBy: string;
@@ -14,7 +13,6 @@ interface TableState {
 
 const initialState: TableState = {
   loading: true,
-  legendData: {},
   headerItems: [],
   rows: [],
   sortedBy: null,
@@ -36,7 +34,6 @@ const tableSlice = createSlice({
         headerItems: Array<any>;
         rows: Array<any>;
         rowUniqueKey: string;
-        legendData: Object;
       }>
     ) => {
       const newState = { ...state, ...action.payload };

@@ -19,10 +19,13 @@ export function sortWithPropertyValue(
   const newArray = Array.from(arr);
 
   return newArray.sort((a, b) => {
+    const item1 = a[propertyName].toString();
+    const item2 = b[propertyName].toString();
+
     if (orderBy === "desc") {
-      return a[propertyName]?.localeCompare(b[propertyName]);
+      return item1?.localeCompare(item2);
     } else {
-      return b[propertyName]?.localeCompare(a[propertyName]);
+      return item2?.localeCompare(item1);
     }
   });
 }

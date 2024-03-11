@@ -4,7 +4,6 @@ import HeaderCell from "./components/headerCell";
 import styles from "./table.module.scss";
 import { useSelector } from "react-redux";
 import { selectTable } from "./tableSlice";
-import { toTitleCase } from "../../shared/utils";
 
 type TableProps = {
   rowClickHandler: (row: any) => void;
@@ -13,23 +12,6 @@ type TableProps = {
 const Table: FC<TableProps> = ({ rowClickHandler }) => {
   // Add legend with item and page count
   const tableData = useSelector(selectTable);
-
-  const renderLegend = useMemo(() => {
-    if (!tableData.legendData) return null;
-
-    return Object.keys(tableData.legendData).map((legendKey: string) => {
-      const legendLabel = toTitleCase(legendKey) || "";
-      if (legendLabel) {
-        return (
-          <span key={legendKey}>
-            {legendLabel}: {tableData.legendData[legendKey]}
-          </span>
-        );
-      } else {
-        return null;
-      }
-    });
-  }, [tableData.legendData]);
 
   const renderHeader = useMemo(() => {
     return tableData.headerItems.map((headerCell) => (
@@ -88,7 +70,6 @@ const Table: FC<TableProps> = ({ rowClickHandler }) => {
           </thead>
           <tbody>{renderRows}</tbody>
         </table>
-        <div className={styles["legend-container"]}>{renderLegend}</div>
       </div>
     );
   }

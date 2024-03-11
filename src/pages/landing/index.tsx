@@ -8,6 +8,7 @@ import Table from "../../components/table";
 import { headerItems } from "./fields";
 import { useNavigate } from "react-router-dom";
 import { RoutePaths } from "../../shared/routes";
+import { setFilmDetailsLoading } from "../filmDetails/filmDetailsSlice";
 
 const Landing = () => {
   const dispatch = useAppDispatch();
@@ -22,10 +23,6 @@ const Landing = () => {
           headerItems,
           rows: res.results,
           rowUniqueKey: "title",
-          legendData: {
-            pages: res.pages,
-            records: res.count,
-          },
         })
       );
     }
@@ -34,6 +31,7 @@ const Landing = () => {
   function rowClickHandler(row: any) {
     if (row.url) {
       const filmId = row.url.split("/").pop();
+      dispatch(setFilmDetailsLoading(true));
       navigate(RoutePaths.filmDetails, { state: { filmId } });
     }
   }

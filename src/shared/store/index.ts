@@ -1,6 +1,6 @@
 import { configureStore } from "@reduxjs/toolkit";
 import tableReducer from "../../components/table/tableSlice";
-import popupMenuReducer from "../../components/popupMenu/popupSlice";
+import popupMenuReducer from "../../components/movieDetailsPopup/popupSlice";
 import filmDetailsReducer from "../../pages/filmDetails/filmDetailsSlice";
 
 export const store = configureStore({
