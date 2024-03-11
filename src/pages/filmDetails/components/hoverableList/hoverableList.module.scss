@@ -1,0 +1,34 @@
+.hoverable-list-container {
+  display: grid;
+  grid-template-columns: 140px auto;
+  gap: 20px;
+  width: 100%;
+  text-align: start;
+
+  h2 {
+    font-size: 24px;
+  }
+
+  .item-list {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    column-gap: 8px;
+
+    .hoverable {
+      // preventing default button styles
+      border: none;
+      padding: 0;
+      font: inherit;
+      cursor: pointer;
+      outline: inherit;
+      background-color: transparent;
+      color: white;
+
+      &:hover {
+        text-decoration: underline;
+        cursor: pointer;
+      }
+    }
+  }
+}

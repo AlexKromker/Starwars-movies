@@ -1,9 +1,13 @@
 import { configureStore } from "@reduxjs/toolkit";
 import tableReducer from "../../components/table/tableSlice";
+import popupMenuReducer from "../../components/popupMenu/popupSlice";
+import filmDetailsReducer from "../../pages/filmDetails/filmDetailsSlice";
 
 export const store = configureStore({
   reducer: {
     table: tableReducer,
+    filmDetails: filmDetailsReducer,
+    popupMenu: popupMenuReducer,
   },
 });
 

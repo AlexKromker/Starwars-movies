@@ -1,0 +1,58 @@
+.film-details-wrapper {
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  min-height: 100dvh;
+  max-width: 100dvw;
+  color: white;
+  background-color: #2A2D34;
+  text-align: center;
+  font-size: 18px;
+
+  .content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    padding: 20px;
+  }
+}
+
+.opening-crawl-container {
+  overflow: hidden;
+  max-width: 700px;
+  height: 100px;
+  perspective: 400px;
+  color: #ffe81f;
+  font-family: 'Pathway Gothic One', sans-serif;
+  font-weight: 600;
+  letter-spacing: 6px;
+  line-height: 150%;
+
+  .opening-crawl {
+    position: relative;
+    top: 100px;
+    transform-origin: 50% 100%;
+    animation: crawl 20s linear infinite;
+
+    h2 {
+      margin-bottom: 20px;
+    }
+
+    p {
+      font-weight: 700;
+    }
+  }
+}
+
+@keyframes crawl {
+  0% {
+    /* The element starts below the screen */
+    top: 100px;
+    transform: rotateX(20deg) translateZ(0);
+  }
+  100% { 
+    top: -400px;
+    transform: rotateX(30deg) translateZ(-100px);
+  }
+}

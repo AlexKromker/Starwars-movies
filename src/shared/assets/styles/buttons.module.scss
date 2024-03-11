@@ -1,0 +1,13 @@
+.btn-primary {
+  background-color: transparent;
+  border: 1px solid white;
+  color: white;
+  border-radius: 8px;
+  height: 40px;
+  padding: 0 20px;
+  cursor: pointer;
+
+  &:hover {
+  text-decoration: underline;
+  }
+}

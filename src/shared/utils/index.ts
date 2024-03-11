@@ -1,6 +1,7 @@
-export function camelCaseToTitleCase(str: string) {
+export function toTitleCase(str: string) {
   return (
     str
+      .replace(/_/g, " ")
       // insert space before all caps
       .replace(/([A-Z])/g, " $1")
       // uppercase the first character

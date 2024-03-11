@@ -1,5 +1,5 @@
-import { camelCaseToTitleCase } from ".";
+import { toTitleCase } from ".";
 
 test("toKebabCase works as expected", () => {
-  expect(camelCaseToTitleCase("testString")).toStrictEqual("Test String");
+  expect(toTitleCase("testString")).toStrictEqual("Test String");
 });

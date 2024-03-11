@@ -6,6 +6,7 @@ import reportWebVitals from "./reportWebVitals";
 import { Provider } from "react-redux";
 import { store } from "./shared/store";
 import { RouterProvider } from "react-router-dom";
+import PopupMenu from "./components/popupMenu";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
@@ -14,6 +15,7 @@ root.render(
   <React.StrictMode>
     <Provider store={store}>
       <RouterProvider router={router} />
+      <PopupMenu />
     </Provider>
   </React.StrictMode>
 );

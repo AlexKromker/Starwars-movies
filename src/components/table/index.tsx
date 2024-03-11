@@ -4,7 +4,7 @@ import HeaderCell from "./components/headerCell";
 import styles from "./table.module.scss";
 import { useSelector } from "react-redux";
 import { selectTable } from "./tableSlice";
-import { camelCaseToTitleCase } from "../../shared/utils";
+import { toTitleCase } from "../../shared/utils";
 
 type TableProps = {
   rowClickHandler: (row: any) => void;
@@ -18,7 +18,7 @@ const Table: FC<TableProps> = ({ rowClickHandler }) => {
     if (!tableData.legendData) return null;
 
     return Object.keys(tableData.legendData).map((legendKey: string) => {
-      const legendLabel = camelCaseToTitleCase(legendKey) || "";
+      const legendLabel = toTitleCase(legendKey) || "";
       if (legendLabel) {
         return (
           <span key={legendKey}>
