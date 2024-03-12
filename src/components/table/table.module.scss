@@ -14,18 +14,18 @@ $color-background: #126b736b;
   border-radius: 16px;
   display: block;
   max-width: 90vw;
+  border: 1px solid rgba(0, 180, 196, 0.729);
 
   table {
     border-collapse: collapse;
     overflow: scroll;
     color: white;
     background: $color-background;
-    border-radius: 16px;
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.4);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(8.6px);
-    border: 1px solid rgba(0, 180, 196, 0.729);
     min-width: 800px;
+    border-radius: 16px;
 
     thead {
       background-color: rgba(18, 107, 115, 0.4);

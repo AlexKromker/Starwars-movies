@@ -1,15 +1,15 @@
 import { useLocation, useNavigate } from "react-router-dom";
-import { getSingleMovie } from "../../shared/api/films";
 import { RoutePaths } from "../../shared/routes";
 import { useSelector } from "react-redux";
 import { selectFilmDetails, setFilmDetails } from "./filmDetailsSlice";
 import { useAppDispatch } from "../../shared/hooks/useStore";
+import { useMemo } from "react";
+import { getSingleMovieWithMutation } from "../../shared/api/films/dataPipes";
 import HoverableList from "./components/hoverableList";
 import StarWarsHeader from "../../components/header";
 import useDidMountEffect from "../../shared/hooks/useDidMountEffect";
 import styles from "./filmDetails.module.scss";
 import PageLoader from "../../components/pageLoader";
-import { useMemo } from "react";
 
 const FilmDetails = () => {
   const navigate = useNavigate();
@@ -22,7 +22,7 @@ const FilmDetails = () => {
     if (location.state === null || !location.state.filmId) {
       return navigate(RoutePaths.landing);
     } else {
-      const movieRes = await getSingleMovie(location.state.filmId);
+      const movieRes = await getSingleMovieWithMutation(location.state.filmId);
 
       dispatch(
         setFilmDetails({

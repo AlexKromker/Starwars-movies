@@ -1,5 +1,4 @@
 import { updateTableContent } from "../../components/table/tableSlice";
-import { getAllMovies } from "../../shared/api/films";
 import { useAppDispatch } from "../../shared/hooks/useStore";
 import Logo from "../../shared/assets/images/logo.svg";
 import useDidMountEffect from "../../shared/hooks/useDidMountEffect";
@@ -10,19 +9,20 @@ import { useNavigate } from "react-router-dom";
 import { RoutePaths } from "../../shared/routes";
 import { setFilmDetailsLoading } from "../filmDetails/filmDetailsSlice";
 import { useCallback } from "react";
+import { getMoviesWithMutation } from "../../shared/api/films/dataPipes";
 
 const Landing = () => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
   useDidMountEffect(async () => {
-    const res = await getAllMovies();
-    if (res) {
+    const movieRes = await getMoviesWithMutation();
+    if (movieRes) {
       dispatch(
         updateTableContent({
           loading: false,
           headerItems,
-          rows: res.results,
+          rows: movieRes,
           rowUniqueKey: "title",
         })
       );

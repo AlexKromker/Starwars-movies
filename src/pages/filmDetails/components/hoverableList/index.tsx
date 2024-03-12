@@ -1,11 +1,11 @@
-import { FC, useMemo } from "react";
-import { HoverableListPropType } from "../interfaces";
 import {
   setPopupContent,
   showLoadingPopup,
 } from "../../../../components/movieDetailsPopup/popupSlice";
-import { getItemAndSubitemsByUrl } from "../../../../shared/api/films";
+import { FC, useMemo } from "react";
+import { HoverableListPropType } from "../interfaces";
 import { useAppDispatch } from "../../../../shared/hooks/useStore";
+import { getItemAndSubitemsByUrl } from "../../../../shared/api/films/dataPipes";
 import styles from "./hoverableList.module.scss";
 import "../../../../shared/assets/styles/buttons.module.scss";
 
