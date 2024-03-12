@@ -9,6 +9,7 @@ import { headerItems } from "./fields";
 import { useNavigate } from "react-router-dom";
 import { RoutePaths } from "../../shared/routes";
 import { setFilmDetailsLoading } from "../filmDetails/filmDetailsSlice";
+import { useCallback } from "react";
 
 const Landing = () => {
   const dispatch = useAppDispatch();
@@ -28,13 +29,16 @@ const Landing = () => {
     }
   });
 
-  function rowClickHandler(row: any) {
-    if (row.url) {
-      const filmId = row.url.split("/").pop();
-      dispatch(setFilmDetailsLoading(true));
-      navigate(RoutePaths.filmDetails, { state: { filmId } });
-    }
-  }
+  const rowClickHandler = useCallback(
+    (row: any) => {
+      if (row.url) {
+        const filmId = row.url.split("/").pop();
+        dispatch(setFilmDetailsLoading(true));
+        navigate(RoutePaths.filmDetails, { state: { filmId } });
+      }
+    },
+    [dispatch, navigate]
+  );
 
   return (
     <div className={styles["landing-wrapper"]}>

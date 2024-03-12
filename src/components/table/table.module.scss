@@ -10,25 +10,22 @@ $color-background: #126b736b;
 }
 
 .table-container {
-  color: white;
-  background: $color-background;
+  overflow-x: auto;
   border-radius: 16px;
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.4);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(8.6px);
-  border: 1px solid rgba(0, 180, 196, 0.729);
-
-  .legend-container {
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    gap: 16px;
-    padding: 20px;
-  }
+  display: block;
+  max-width: 90vw;
 
   table {
-    min-width: 90dvw;
     border-collapse: collapse;
+    overflow: scroll;
+    color: white;
+    background: $color-background;
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(8.6px);
+    border: 1px solid rgba(0, 180, 196, 0.729);
+    min-width: 800px;
 
     thead {
       background-color: rgba(18, 107, 115, 0.4);

@@ -53,7 +53,7 @@ const Table: FC<TableProps> = ({ rowClickHandler }) => {
         e
       );
     }
-  }, [tableData.rows]);
+  }, [tableData.rows, getCells, rowClickHandler, tableData.rowUniqueKey]);
 
   if (tableData.loading) {
     return (
