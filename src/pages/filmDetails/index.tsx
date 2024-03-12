@@ -21,9 +21,11 @@ const FilmDetails = () => {
     // If we don't have a filmId, redirect to landing page
     if (location.state === null || !location.state.filmId) {
       return navigate(RoutePaths.landing);
-    } else {
-      const movieRes = await getSingleMovieWithMutation(location.state.filmId);
+    }
 
+    const movieRes = await getSingleMovieWithMutation(location.state.filmId);
+
+    if (movieRes) {
       dispatch(
         setFilmDetails({
           ...movieRes,

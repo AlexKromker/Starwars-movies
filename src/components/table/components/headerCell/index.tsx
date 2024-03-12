@@ -25,7 +25,6 @@ const HeaderCell: React.FC<HeaderCellPropType> = ({
 
   if (sortable) {
     return (
-      // TODO: Add active logic for icons
       <td onClick={() => dispatch(setSortedBy(itemKey))}>
         <div className={styles["header-cell-content"]}>
           <span>{label}</span>
