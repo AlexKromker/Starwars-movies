@@ -1,6 +1,6 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 import { RootState } from "../../shared/store";
-import { HoverableItemType } from "./components/interfaces";
+import { HoverableItemType } from "./types";
 
 export interface IFilmDetails {
   url: string;

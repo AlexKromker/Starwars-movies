@@ -1,6 +1,11 @@
 # Star Wars Movies / SWAPI API
 
-his project was created with [Create React App](https://github.com/facebook/create-react-app). Using API from [SWAPI](https://swapi-node.now.sh).<br>
+Displays a table containing Star Wars movies, that can be clicked through to a details page containing further information on the movie. Once there you can click on any character, planet, species, starship or vehicle for some extra information.
+
+This project was created with [Create React App](https://github.com/facebook/create-react-app).
+Using API from [SWAPI](https://swapi-node.now.sh).
+
+<br>
 
 # App folder structure
 
@@ -8,8 +13,6 @@ his project was created with [Create React App](https://github.com/facebook/crea
 ── src
   ├── components
   ├── pages
-    ├── page
-      ├── components
   ├── shared
     ├── api
     ├── assets
@@ -22,13 +25,13 @@ his project was created with [Create React App](https://github.com/facebook/crea
 ```
 
 <br/>
-- `components`: Folder for all shared components
+- `components`: Folder for all components
 - `pages`: Folder containing one folder for each route
-- `pages/components`: Folder containing all components specific to only one route
 - `shared/assets`: Folder containing all assets
 - `shared/routes`: Folder containing all route logic
 - `shared/store`: Folder containing logic for shared redux store(slices are imported from pages/components)<br/>
 
 # Table implementation
 
-Requires only row data, headerItems and click events. All rows are mapped and only properties with keys matching those in the headerItemList are used (other data can still be used inside the clickHandlers such us `rowItem.url`).
+Table is strictly a visual component, having all rows, headers and callbacks passed through props.
+For the table content, only the properties specified in the header are mapped, allowing the callbacks to have access to properties not intended to be displayed (e.g the object url)

@@ -1,13 +1,12 @@
 import {
   setPopupContent,
   showLoadingPopup,
-} from "../../../../components/movieDetailsPopup/popupSlice";
+} from "../movieDetailsPopup/popupSlice";
 import { FC, useMemo } from "react";
-import { HoverableListPropType } from "../interfaces";
-import { useAppDispatch } from "../../../../shared/hooks/useStore";
-import { getItemAndSubitemsByUrl } from "../../../../shared/api/films/dataPipes";
+import { HoverableListPropType } from "../../pages/filmDetails/types";
+import { useAppDispatch } from "../../shared/hooks/useStore";
+import { getItemAndSubitemsByUrl } from "../../shared/api/films/dataPipes";
 import styles from "./hoverableList.module.scss";
-import "../../../../shared/assets/styles/buttons.module.scss";
 
 const HoverableLists: FC<HoverableListPropType> = ({ listLabel, itemList }) => {
   const dispatch = useAppDispatch();
@@ -31,7 +30,7 @@ const HoverableLists: FC<HoverableListPropType> = ({ listLabel, itemList }) => {
   }
 
   const renderList = useMemo(() => {
-    return itemList.map(({ name, url }, index) => {
+    return itemList.map(({ name, url }, index: number) => {
       const separator = index < itemList.length - 1 ? ", " : ".";
       return (
         <button

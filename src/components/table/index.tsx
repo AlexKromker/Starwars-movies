@@ -1,28 +1,33 @@
 import { FC, useCallback, useMemo } from "react";
+import { IHeaderCellFields, ITableProps } from "./types";
 import BB8Loader from "../loader";
-import HeaderCell from "./components/headerCell";
+import HeaderCell from "../tableHeaderCell";
 import styles from "./table.module.scss";
-import { useSelector } from "react-redux";
-import { selectTable } from "./tableSlice";
 
-type TableProps = {
-  rowClickHandler: (row: any) => void;
-};
-
-const Table: FC<TableProps> = ({ rowClickHandler }) => {
+const Table: FC<ITableProps> = ({
+  loading,
+  headerItems,
+  rows,
+  sortedBy,
+  orderBy,
+  rowUniqueKey,
+  rowClickHandler,
+  sortHandler,
+}) => {
   // Add legend with item and page count
-  const tableData = useSelector(selectTable);
-
   const renderHeader = useMemo(() => {
-    return tableData.headerItems.map((headerCell) => (
-      <HeaderCell {...headerCell} key={headerCell.itemKey} />
+    return headerItems.map((headerCell: IHeaderCellFields) => (
+      <HeaderCell
+        key={headerCell.itemKey}
+        {...{ ...headerCell, sortedBy, orderBy, sortHandler }}
+      />
     ));
-  }, [tableData.headerItems]);
+  }, [headerItems]);
 
   const getCells = useCallback(
     (row: any, rowKey: string) => {
       // Only maps the new cell if it's requested in the headerItems list.
-      return tableData.headerItems.map((headerCell) => {
+      return headerItems.map((headerCell) => {
         if (row.hasOwnProperty(headerCell.itemKey)) {
           return (
             <td key={`${rowKey}-${headerCell.itemKey}`}>
@@ -34,13 +39,13 @@ const Table: FC<TableProps> = ({ rowClickHandler }) => {
         }
       });
     },
-    [tableData.headerItems]
+    [headerItems]
   );
 
   const renderRows = useMemo(() => {
     try {
-      return tableData.rows.map((currRow) => {
-        let rowKey = currRow[tableData.rowUniqueKey];
+      return rows.map((currRow) => {
+        let rowKey = currRow[rowUniqueKey];
         return (
           <tr key={rowKey} onClick={() => rowClickHandler(currRow)}>
             {getCells(currRow, rowKey)}
@@ -53,9 +58,9 @@ const Table: FC<TableProps> = ({ rowClickHandler }) => {
         e
       );
     }
-  }, [tableData.rows, getCells, rowClickHandler, tableData.rowUniqueKey]);
+  }, [rows, getCells, rowClickHandler, rowUniqueKey]);
 
-  if (tableData.loading) {
+  if (loading) {
     return (
       <div className={styles["loading-container"]}>
         <BB8Loader />

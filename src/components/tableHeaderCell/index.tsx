@@ -2,30 +2,23 @@
 // has click event for sorting
 // shows if sortable
 // shows sort order
-import { useSelector } from "react-redux";
-import { useAppDispatch } from "../../../../shared/hooks/useStore";
-import { selectTable, setSortedBy } from "../../tableSlice";
 import cn from "classnames";
-import styles from "./headerCell.module.scss";
+import styles from "./tableHeaderCell.module.scss";
+import { IHeaderCellProps } from "../table/types";
 
-export type HeaderCellPropType = {
-  itemKey: string;
-  label: string;
-  sortable?: boolean;
-};
-
-const HeaderCell: React.FC<HeaderCellPropType> = ({
+const TableHeaderCell: React.FC<IHeaderCellProps> = ({
   itemKey,
   label,
   sortable,
+  sortedBy,
+  orderBy,
+  sortHandler,
 }) => {
-  const dispatch = useAppDispatch();
-  const { sortedBy, orderBy } = useSelector(selectTable);
   const focused = sortedBy === itemKey;
 
   if (sortable) {
     return (
-      <td onClick={() => dispatch(setSortedBy(itemKey))}>
+      <td onClick={() => sortHandler(itemKey)}>
         <div className={styles["header-cell-content"]}>
           <span>{label}</span>
           <div className={styles["icon-container"]}>
@@ -48,4 +41,4 @@ const HeaderCell: React.FC<HeaderCellPropType> = ({
   }
 };
 
-export default HeaderCell;
+export default TableHeaderCell;

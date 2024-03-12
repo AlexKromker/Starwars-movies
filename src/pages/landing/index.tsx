@@ -1,4 +1,3 @@
-import { updateTableContent } from "../../components/table/tableSlice";
 import { useAppDispatch } from "../../shared/hooks/useStore";
 import Logo from "../../shared/assets/images/logo.svg";
 import useDidMountEffect from "../../shared/hooks/useDidMountEffect";
@@ -10,9 +9,16 @@ import { RoutePaths } from "../../shared/routes";
 import { setFilmDetailsLoading } from "../filmDetails/filmDetailsSlice";
 import { useCallback } from "react";
 import { getMoviesWithMutation } from "../../shared/api/films/dataPipes";
+import {
+  selectLandingTable,
+  setSortedBy,
+  updateTableContent,
+} from "./landingSlice";
+import { useSelector } from "react-redux";
 
 const Landing = () => {
   const dispatch = useAppDispatch();
+  const tableData = useSelector(selectLandingTable);
   const navigate = useNavigate();
 
   useDidMountEffect(async () => {
@@ -40,10 +46,20 @@ const Landing = () => {
     [dispatch, navigate]
   );
 
+  const sortHandler = useCallback((str: string) => {
+    dispatch(setSortedBy(str));
+  }, []);
+
   return (
     <div className={styles["landing-wrapper"]}>
       <img src={Logo} alt="" className={styles["star-wars-logo"]} />
-      <Table rowClickHandler={rowClickHandler} />
+      <Table
+        {...{
+          ...tableData,
+          rowClickHandler,
+          sortHandler,
+        }}
+      />
     </div>
   );
 };

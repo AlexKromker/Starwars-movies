@@ -1,11 +1,11 @@
 import { configureStore } from "@reduxjs/toolkit";
-import tableReducer from "../../components/table/tableSlice";
+import landingReducer from "../../pages/landing/landingSlice";
 import popupMenuReducer from "../../components/movieDetailsPopup/popupSlice";
 import filmDetailsReducer from "../../pages/filmDetails/filmDetailsSlice";
 
 export const store = configureStore({
   reducer: {
-    table: tableReducer,
+    landing: landingReducer,
     filmDetails: filmDetailsReducer,
     popupMenu: popupMenuReducer,
   },

@@ -5,11 +5,11 @@ import { selectFilmDetails, setFilmDetails } from "./filmDetailsSlice";
 import { useAppDispatch } from "../../shared/hooks/useStore";
 import { useMemo } from "react";
 import { getSingleMovieWithMutation } from "../../shared/api/films/dataPipes";
-import HoverableList from "./components/hoverableList";
 import StarWarsHeader from "../../components/header";
 import useDidMountEffect from "../../shared/hooks/useDidMountEffect";
 import styles from "./filmDetails.module.scss";
 import PageLoader from "../../components/pageLoader";
+import HoverableList from "../../components/hoverableList";
 
 const FilmDetails = () => {
   const navigate = useNavigate();

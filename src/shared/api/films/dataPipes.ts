@@ -6,7 +6,7 @@ import {
   getItemByUrl,
   getSingleMovie,
 } from ".";
-import { HoverableItemType } from "../../../pages/filmDetails/components/interfaces";
+import { HoverableItemType } from "../../../pages/filmDetails/types";
 
 export const getMoviesWithMutation = async (): Promise<
   TMovieResponse[] | null
