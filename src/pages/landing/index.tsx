@@ -17,7 +17,6 @@ const Landing = () => {
 
   useDidMountEffect(async () => {
     const movieRes = await getMoviesWithMutation();
-    console.log('Movie resonse', movieRes)
     if (movieRes) {
       dispatch(
         updateTableContent({
