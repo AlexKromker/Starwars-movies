@@ -1,11 +1,9 @@
 # Star Wars Movies / SWAPI API
 
-Displays a table containing Star Wars movies, that can be clicked through to a details page containing further information on the movie. Once there you can click on any character, planet, species, starship or vehicle for some extra information.
+Displays a table containing Star Wars movies. Any movie can be clicked on to redirect the user to a details page. Once there the user can click on any character, planet, species, starship or vehicle for some extra information.
 
 This project was created with [Create React App](https://github.com/facebook/create-react-app).
 Using API from [SWAPI](https://swapi-node.now.sh).
-
-<br>
 
 # App folder structure
 
@@ -24,12 +22,13 @@ Using API from [SWAPI](https://swapi-node.now.sh).
     ├── utils
 ```
 
-<br/>
-- `components`: Folder for all components
-- `pages`: Folder containing one folder for each route
-- `shared/assets`: Folder containing all assets
-- `shared/routes`: Folder containing all route logic
-- `shared/store`: Folder containing logic for shared redux store(slices are imported from pages/components)<br/>
+```
+- 'components': Folder for all components
+- 'pages': Folder containing one folder for each route
+- 'shared/assets': Folder containing all assets
+- 'shared/routes': Folder containing all route logic
+- 'shared/store': Folder containing logic for shared redux store(slices are imported from pages/components)
+```
 
 # Table implementation
 
