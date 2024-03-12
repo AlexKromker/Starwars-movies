@@ -1,5 +1,4 @@
-$color-foreground: rgba(18, 107, 115, 0.603);
-$color-background: #126b736b;
+@import '../../shared/assets/styles/variables';
 
 .loading-container {
   display: flex;
@@ -20,7 +19,7 @@ $color-background: #126b736b;
     border-collapse: collapse;
     overflow: scroll;
     color: white;
-    background: $color-background;
+    background: $color-table-background;
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.4);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(8.6px);
@@ -42,11 +41,11 @@ $color-background: #126b736b;
 
       td {
         padding: 10px;
-        border-bottom: 1px solid $color-foreground;
+        border-bottom: 1px solid $color-table-foreground;
       }
 
       td:not(:last-child) {
-        border-right: 1px solid $color-foreground;
+        border-right: 1px solid $color-table-foreground;
       }
     }
 
@@ -55,7 +54,7 @@ $color-background: #126b736b;
         height: 40px;
 
         &:not(:last-child) {
-          border-bottom: 1px solid $color-foreground;
+          border-bottom: 1px solid $color-table-foreground;
         }
 
         &:hover {
@@ -70,7 +69,7 @@ $color-background: #126b736b;
         padding: 10px;
 
         &:not(:last-child) {
-          border-right: 1px solid $color-foreground;
+          border-right: 1px solid $color-table-foreground;
         }
       }
     }

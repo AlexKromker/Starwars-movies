@@ -1,4 +1,4 @@
-$color-background: #126b736b  ;
+@import '../../shared/assets/styles/variables';
 
 .film-details-wrapper {
   display: flex;
@@ -20,7 +20,7 @@ $color-background: #126b736b  ;
     gap: 20px;
     padding: 20px;
     color: white;
-    background: $color-background;
+    background: $color-table-background;
     border-radius: 16px;
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.4);
     backdrop-filter: blur(10px);

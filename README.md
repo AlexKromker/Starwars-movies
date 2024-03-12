@@ -22,13 +22,11 @@ Using API from [SWAPI](https://swapi-node.now.sh).
     ├── utils
 ```
 
-```
 - 'components': Folder for all components
 - 'pages': Folder containing one folder for each route
 - 'shared/assets': Folder containing all assets
 - 'shared/routes': Folder containing all route logic
 - 'shared/store': Folder containing logic for shared redux store(slices are imported from pages/components)
-```
 
 # Table implementation
 

@@ -1,0 +1,15 @@
+$color-table-background: rgba(18, 107, 115, 0.236);
+$color-table-foreground: rgba(18, 107, 115, 0.603);
+
+$color-tiffany-blue: #00B4C4;
+
+// Layout
+$breakpoint-xs: 320px;
+$breakpoint-sm: 768px;
+$breakpoint-md: 1024px;
+$breakpoint-lg: 1366px;
+$breakpoint-xlg: 1440px;
+$breakpoint-xs-max: $breakpoint-sm + 1px;
+$breakpoint-sm-max: $breakpoint-md + 1px;
+$breakpoint-md-max: $breakpoint-lg + 1px;
+$breakpoint-lg-max: $breakpoint-xlg + 1px;

@@ -1,13 +1,13 @@
-$color-background: rgba(18, 107, 115, 0.236);
+@import '../../shared/assets/styles/variables';
 
 .popup-container {
   padding: 40px;
   font-size: 16px;
   border-radius: 16px;
-  border: 1px solid rgba(0, 180, 196, 0.6);
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.4);
+  border: 1px solid ;
+  box-shadow: 0 4px 30px #00000066;
   color: white;
-  background: $color-background;
+  background: $color-table-background;
   cursor: pointer;
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(8.6px);
