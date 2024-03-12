@@ -25,6 +25,7 @@ Using API from [SWAPI](https://swapi-node.now.sh).
 - 'components': Folder for all components
 - 'pages': Folder containing one folder for each route
 - 'shared/assets': Folder containing all assets
+- 'shared/assets/styles/variables': File containing all scss variables including breakpoints and main colors used
 - 'shared/routes': Folder containing all route logic
 - 'shared/store': Folder containing logic for shared redux store(slices are imported from pages/components)
 
