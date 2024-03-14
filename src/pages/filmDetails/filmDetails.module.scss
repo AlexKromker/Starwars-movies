@@ -32,6 +32,14 @@
       flex-direction: row;
       flex-wrap: wrap;
       gap: 20px;
+      
+      .sub-info-item {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: flex-start;
+        gap: 12px;
+      }
     }
 
     .list-content {

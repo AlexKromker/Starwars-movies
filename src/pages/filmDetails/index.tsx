@@ -62,12 +62,14 @@ const FilmDetails = () => {
         <h1>{filmDetails.title}</h1>
         {renderOpeningCrawl}
         <div className={styles["sub-info"]}>
-          <p>
-            <b>Producers:</b> {filmDetails.producer}
-          </p>
-          <p>
-            <b>Director:</b> {filmDetails.director}
-          </p>
+          <div className={styles["sub-info-item"]}>
+            <b>Director:</b>
+            <span> {filmDetails.director} </span>
+          </div>
+          <div className={styles["sub-info-item"]}>
+            <b>Producers:</b>
+            <span>{filmDetails.producer}</span>
+          </div>
         </div>
 
         <div className={styles["list-content"]}>
