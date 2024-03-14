@@ -43,7 +43,7 @@ export const MovieDetailsPopup = () => {
 
         return (
           <div key={itemKey} className={styles["item-container"]}>
-            <span className={styles["title"]}>{toTitleCase(itemKey)}</span>
+            <span className={styles["title"]}>{toTitleCase(itemKey)}:</span>
             <div className={styles["item-list-container"]}>
               {getSubChildren(currObject)}
             </div>
@@ -52,7 +52,7 @@ export const MovieDetailsPopup = () => {
       } else {
         return (
           <div className={styles["item-container"]} key={itemKey}>
-            <span className={styles["title"]}>{toTitleCase(itemKey)}</span>
+            <span className={styles["title"]}>{toTitleCase(itemKey)}:</span>
             <span>{toTitleCase(currObject)}</span>
           </div>
         );
